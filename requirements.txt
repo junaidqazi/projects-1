@@ -1,0 +1,4 @@
+tqdm
+requests
+huggingface-hub
+herpetologist
