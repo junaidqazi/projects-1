@@ -30,7 +30,14 @@ We recommend to use **virtualenv** for development.
 Features
 --------
 
--  **SuaraKami**, Suara Kami: pre-trained STT models for Bahasa Malaysia.
+-  **SuaraKami**, Pre-trained STT models for Bahasa Malaysia, from https://github.com/redapesolutions/suara-kami-community
+
+Other Projects
+---------------
+
+- `Malaya <https://github.com/huseinzol05/malaya>`_, Natural Language Toolkit for Bahasa Malaysia.
+- `Malaya-Speech <https://github.com/huseinzol05/malaya-speech>`_, Speech Toolkit for Bahasa Malaysia.
+- `SuaraKami <https://github.com/redapesolutions/suara-kami-community>`_, Suara Kami: pre-trained STT models for Bahasa Malaysia.
 
 Acknowledgement
 ----------------

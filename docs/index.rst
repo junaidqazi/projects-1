@@ -11,6 +11,8 @@ Contents:
    :maxdepth: 2
    :caption: Getting Started
 
+   add-new-module
+   add-new-doc
    Api
    Contributing
 
