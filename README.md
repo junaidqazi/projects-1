@@ -14,7 +14,7 @@ pip install git+https://github.com/malaysia-ai/projects.git
 
 ## API
 
-### malaysia_ai_projects.suarakami
+### [malaysia_ai_projects.suarakami](malaysia_ai_projects/suarakami)
 
 Malay Speech-to-Text from https://github.com/redapesolutions/suara-kami-community
 

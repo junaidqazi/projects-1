@@ -43,11 +43,17 @@ huggingface_filenames = {'small-conformer': 'conformer_small.onnx',
 
 
 def available_model():
+    """
+    List available SuaraKami models.
+    """
     from malaysia_ai_projects.utils import describe_availability
     return describe_availability(_available_models)
 
 
 def available_lm():
+    """
+    List available SuaraKami language models.
+    """
     from malaysia_ai_projects.utils import describe_availability
     return describe_availability(_available_lm)
 
