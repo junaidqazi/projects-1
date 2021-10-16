@@ -5,6 +5,7 @@ import argparse
 import logging
 import json
 import numpy as np
+import torch
 
 MATPLOTLIB_FLAG = False
 

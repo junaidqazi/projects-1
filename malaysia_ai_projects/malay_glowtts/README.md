@@ -17,6 +17,14 @@ python3 setup.py build_ext --inplace
 - For `female` speaker, [prepare-female-glowtts.ipynb](prepare-female-glowtts.ipynb).
 - For `haqkiem` speaker, [prepare-haqkiem-glowtts.ipynb](prepare-haqkiem-glowtts.ipynb).
 
+3. Run train session,
+
+For `male` speaker,
+
+```bash
+python3 train.py -c config/male.json -m male
+```
+
 ## Citation
 
 ```bibtex

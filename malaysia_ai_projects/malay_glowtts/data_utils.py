@@ -15,7 +15,7 @@ _letters = 'abcdefghijklmnopqrstuvwxyz'
 symbols = [_pad, _start, _eos] + list(_punctuation) + list(_letters)
 
 
-def text_to_sequence(text):
+def text_to_sequence(string):
     r = [symbols.index(c) for c in string if c in symbols]
     return r
 
@@ -29,9 +29,10 @@ class TextMelLoader(torch.utils.data.Dataset):
 
     def __init__(self, audiopaths_and_text, hparams):
         self.audiopaths_and_text = load_filepaths_and_text(audiopaths_and_text)
-        self.text_cleaners = hparams.text_cleaners
         self.max_wav_value = hparams.max_wav_value
         self.sampling_rate = hparams.sampling_rate
+        self.add_blank = getattr(hparams, "add_blank", False)
+
         random.seed(1234)
         random.shuffle(self.audiopaths_and_text)
 
@@ -44,7 +45,7 @@ class TextMelLoader(torch.utils.data.Dataset):
 
     def get_mel(self, filename):
         filename = filename.replace('/audios', '/mels').replace('.wav', '.npy')
-        melspec = torch.from_numpy(np.load(filename).astype(np.float32))
+        melspec = torch.from_numpy(np.load(filename).astype(np.float32)).T
         return melspec
 
     def get_text(self, text):
@@ -118,7 +119,6 @@ class TextMelSpeakerLoader(torch.utils.data.Dataset):
 
     def __init__(self, audiopaths_sid_text, hparams):
         self.audiopaths_sid_text = load_filepaths_and_text(audiopaths_sid_text)
-        self.text_cleaners = hparams.text_cleaners
         self.max_wav_value = hparams.max_wav_value
         self.sampling_rate = hparams.sampling_rate
         self.add_blank = getattr(hparams, "add_blank", False)  # improved version
@@ -150,7 +150,7 @@ class TextMelSpeakerLoader(torch.utils.data.Dataset):
         return melspec
 
     def get_text(self, text):
-        text_norm = text_to_sequence(text, self.text_cleaners, getattr(self, "cmudict", None))
+        text_norm = text_to_sequence(text)
         if self.add_blank:
             # add a blank token, whose id number is len(symbols)
             text_norm = commons.intersperse(text_norm, len(symbols))
