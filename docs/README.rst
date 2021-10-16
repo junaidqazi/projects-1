@@ -35,7 +35,7 @@ Features
 Acknowledgement
 ----------------
 
-Thanks to `KeyReply <https://www.keyreply.com/>`_ for sponsoring private cloud to train Malaya-Speech models, without it, this library will collapse entirely.  
+Thanks to `KeyReply <https://www.keyreply.com/>`_ for sponsoring private cloud to train Malaysia-AI Project models.  
 
 .. raw:: html
 
