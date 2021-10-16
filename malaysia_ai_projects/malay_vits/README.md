@@ -11,8 +11,11 @@ cd monotonic_align
 python3 setup.py build_ext --inplace
 ```
 
-2. Prepare dataset []().
+2. Prepare dataset,
 
+- For `male` speaker, [prepare-male-vits.ipynb](prepare-male-vits.ipynb).
+- For `female` speaker, [prepare-female-vits.ipynb](prepare-female-vits.ipynb).
+- For `haqkiem` speaker, [prepare-haqkiem-vits.ipynb](prepare-haqkiem-vits.ipynb).
 
 ## Citation
 
