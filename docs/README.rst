@@ -31,6 +31,7 @@ Features
 --------
 
 -  **SuaraKami**, Pre-trained STT models for Bahasa Malaysia, from https://github.com/redapesolutions/suara-kami-community
+-  **Pembalakan**, Satellite Semantic segmentation for deforestation in Malaysia.
 
 Other Projects
 ---------------
