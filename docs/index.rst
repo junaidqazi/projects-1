@@ -21,3 +21,4 @@ Contents:
    :caption: Module
 
    load-suarakami
+   load-pembalakan
