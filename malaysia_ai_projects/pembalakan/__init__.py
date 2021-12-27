@@ -12,12 +12,12 @@ from typing import List
 
 _available_models = {
     'efficientnet-b4': {
-        'Size (MB)': 60.3,
-        'Test Loss': 0.12,
+        'Size (MB)': 79.9,
+        'Test Loss': 0.11,
     },
     'efficientnet-b4-quantized': {
-        'Size (MB)': 17.9,
-        'Test Loss': 0.12,
+        'Size (MB)': 20.7,
+        'Test Loss': 0.11,
     },
     'efficientnet-b2': {
         'Size (MB)': 66.4,
