@@ -9,10 +9,11 @@ from utils import load_filepaths_and_text
 _pad = 'pad'
 _start = 'start'
 _eos = 'eos'
+_space = ' '
 _punctuation = "!',.-"
 _letters = 'abcdefghijklmnopqrstuvwxyz'
 
-symbols = [_pad, _start, _eos] + list(_punctuation) + list(_letters)
+symbols = [_pad, _start, _eos, _space] + list(_punctuation) + list(_letters)
 
 
 def text_to_sequence(string):
