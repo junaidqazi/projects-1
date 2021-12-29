@@ -13,14 +13,19 @@ import imgaug as ia
 import imgaug.augmenters as iaa
 from imgaug.augmentables.segmaps import SegmentationMapsOnImage
 from glob import glob
+from skimage.transform import resize
 import random
 
+
+def sometimes(aug): return iaa.Sometimes(0.6, aug)
+
+
 seq = iaa.Sequential([
-    iaa.Affine(rotate=(-90, 90)),
+    sometimes(iaa.Affine(rotate=(-90, 90))),
     iaa.Add((-5, 5)),
-    iaa.Clouds(),
+    sometimes(iaa.Clouds()),
     iaa.CropToFixedSize(width=256, height=256),
-    iaa.MotionBlur(k=3, angle=[-45, 45]),
+    sometimes(iaa.MotionBlur(k=3, angle=[-45, 45])),
 ], random_order=True)
 
 
@@ -29,7 +34,7 @@ def augmentation(image, ori_mask):
     mask[:, :, 1] = 1.0
     mask = cv2.bitwise_and(mask, ori_mask)
     mask = mask[:, :, 1:2]
-    if random.random() > 0.6:
+    if random.random() > 0.5:
         segmap = SegmentationMapsOnImage(mask.astype(np.int32), shape=image.shape)
         img = image.astype(np.uint8)
         images_aug_i, segmaps_aug_i = seq(image=img, segmentation_maps=segmap)
@@ -39,7 +44,10 @@ def augmentation(image, ori_mask):
         images_aug_i = images_aug_i.astype(np.float32) / 255.0
         return images_aug_i, seg
     else:
-        return image.astype(np.float32) / 255.0, mask
+        image = resize(image, (256, 256))
+        mask = resize(mask, (256, 256))
+        mask = np.around(mask)
+        return image.astype(np.float32), mask
 
 
 def _parse_image_function(example_proto):
@@ -49,11 +57,9 @@ def _parse_image_function(example_proto):
     }
     features = tf.compat.v1.parse_single_example(example_proto, features=image_feature_description)
     image = tf.image.decode_png(features['image'], channels=3)
-    image = tf.image.resize(image, [256, 256])
     mask = tf.io.decode_raw(features['mask'], out_type="float")
     mask = tf.reshape(mask, [512, 512, 3])
     mask = tf.cast(mask, tf.float32)
-    mask = tf.image.resize(mask, [256, 256])
 
     image, mask = tf.compat.v1.numpy_function(augmentation, [image, mask], [tf.float32, tf.float32])
     image = tf.reshape(image, (256, 256, 3))
