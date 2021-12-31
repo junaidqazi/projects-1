@@ -22,3 +22,4 @@ Contents:
 
    load-suarakami
    load-pembalakan
+   load-jelapang-padi

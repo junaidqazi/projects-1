@@ -49,7 +49,7 @@ def available_model():
 @check_type
 def load(model: str = 'efficientnet-b2', **kwargs):
     """
-    Load suarakami model.
+    Load Pembalakan model.
 
     Parameters
     ----------
