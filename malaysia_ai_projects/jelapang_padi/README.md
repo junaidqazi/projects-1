@@ -9,6 +9,13 @@ All dataset can get at https://huggingface.co/datasets/malay-huggingface/jelapan
 1. [mapbox-kedah.ipynb](mapbox-kedah.ipynb) to scrap satellite images for specific latlong boundaries at Kedah with 15 zoom level.
 2. [mapbox-sekinchan.ipynb](mapbox-sekinchan.ipynb) to scrap satellite images for specific latlong boundaries at Sekinchan with 15 zoom level.
 
+## Supervised the data
+
+Or you can help us to label the data, access can get at https://github.com/malaysia-ai/label-studio
+
+1. Kedah, https://label.malaysiaai.ml/projects/7/data
+2. Sekinchan, https://label.malaysiaai.ml/projects/5/data?tab=6
+
 ## Checkpoint
 
 All checkpoints can get at https://huggingface.co/malay-huggingface/jelapang-padi
