@@ -1,6 +1,6 @@
-# IGN-ConvNeXt
+# IGN-EfficientNet
 
-ConvNeXt Tensorflow from https://github.com/bamps53/convnext-tf
+EfficientNet Tensorflow from https://github.com/qubvel/efficientnet
 
 **This directory is very lack of comments, understand Tensorflow, Tensorflow estimator, Tensorflow Dataset really helpful**.
 
@@ -24,18 +24,6 @@ Road => 1.47807
 Thanks to [KeyReply](https://www.keyreply.com/) for sponsoring GPU clouds to train the models.
 
 ## How-to
-
-### EfficientNetB2
-
-1. Run [convert-efficientnetb2-keras-to-tf1.ipynb](convert-efficientnetb2-keras-to-tf1.ipynb) to convert H5 checkpoint to Tensorflow checkpoint.
-
-2. Run [efficientnetb2.py](efficientnetb2.py) to start pretrain.
-
-### EfficientNetB4
-
-1. Run [convert-efficientnetb4-keras-to-tf1.ipynb](convert-efficientnetb4-keras-to-tf1.ipynb) to convert H5 checkpoint to Tensorflow checkpoint.
-
-2. Run [efficientnetb4.py](efficientnetb4.py) to start pretrain.
 
 ## Download
 
