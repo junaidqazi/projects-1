@@ -11,12 +11,14 @@ ConvNeXt Tensorflow from https://github.com/bamps53/convnext-tf
 And make sure put bias on the dataset, https://github.com/koechslin/swin-transformer-semantic-segmentation#information-on-the-training
 
 ```
-Dense forest => 0.5
-Sparse forest => 1.31237
-Moor => 1.38874
-Herbaceous formation => 1.39761
-Building => 1.5
-Road => 1.47807
+0. padding => 1.0
+1. no information (others) => 1.0
+2. Dense forest => 0.5
+3. Sparse forest => 1.31237
+4. Moor => 1.38874
+5. Herbaceous formation => 1.39761
+6. Building => 1.5
+7. Road => 1.47807
 ```
 
 ## Acknowledgement
@@ -25,17 +27,24 @@ Thanks to [KeyReply](https://www.keyreply.com/) for sponsoring GPU clouds to tra
 
 ## How-to
 
-### EfficientNetB2
+### TINY
 
-1. Run [convert-efficientnetb2-keras-to-tf1.ipynb](convert-efficientnetb2-keras-to-tf1.ipynb) to convert H5 checkpoint to Tensorflow checkpoint.
+1. Run [convert-tiny-convnext-224-to-tf1.ipynb](convert-tiny-convnext-224-to-tf1.ipynb) to convert H5 checkpoint to Tensorflow checkpoint.
 
-2. Run [efficientnetb2.py](efficientnetb2.py) to start pretrain.
+2. Run [tiny.py](tiny.py) to start pretrain.
 
-### EfficientNetB4
+### SMALL
 
-1. Run [convert-efficientnetb4-keras-to-tf1.ipynb](convert-efficientnetb4-keras-to-tf1.ipynb) to convert H5 checkpoint to Tensorflow checkpoint.
+1. Run [convert-small-convnext-224-to-tf1.ipynb](convert-small-convnext-224-to-tf1.ipynb) to convert H5 checkpoint to Tensorflow checkpoint.
 
-2. Run [efficientnetb4.py](efficientnetb4.py) to start pretrain.
+2. Run [small.py](small.py) to start pretrain.
+
+### BASE
+
+1. Run [convert-base-convnext-224-to-tf1.ipynb](convert-base-convnext-224-to-tf1.ipynb) to convert H5 checkpoint to Tensorflow checkpoint.
+
+2. Run [base.py](base.py) to start pretrain.
 
 ## Download
 
+All pretrained stored at https://huggingface.co/malay-huggingface/ign-ConvNeXt

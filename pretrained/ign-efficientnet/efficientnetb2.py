@@ -16,7 +16,7 @@ from sklearn.utils import shuffle
 import random
 
 IMAGE_SIZE = 384
-CLASSES = 7
+CLASSES = 8
 BATCH_SIZE = 8
 
 
@@ -221,7 +221,7 @@ class Model:
         self.logits = tf.keras.layers.Conv2D(CLASSES, (1, 1), padding="same", activation="softmax")(uconv0)
 
 
-num_train_steps = 10000
+num_train_steps = 30000
 init_lr = 1e-3
 end_learning_rate = 1e-5
 
@@ -233,7 +233,7 @@ def model_fn(features, labels, mode, params):
     model = Model(X=X, Y=Y)
 
     focal_loss = sm.losses.CategoricalFocalLoss()
-    dice_loss = sm.losses.DiceLoss(class_weights=np.array([0.5, 1.31237, 1.38874, 1.39761, 1.5, 1.47807, 1.0]))
+    dice_loss = sm.losses.DiceLoss()
     total_loss = dice_loss + (1 * focal_loss)
 
     iou = sm.metrics.IOUScore(threshold=0.5)
@@ -244,11 +244,11 @@ def model_fn(features, labels, mode, params):
 
     iou_score = iou(model.Y, model.logits)
     tf.identity(iou_score, 'iou')
-    tf.summary.scalar('iou', iou)
+    tf.summary.scalar('iou', iou_score)
 
     fscore_score = fscore(model.Y, model.logits)
     tf.identity(fscore_score, 'fscore')
-    tf.summary.scalar('fscore', fscore)
+    tf.summary.scalar('fscore', fscore_score)
 
     variables = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
     init_checkpoint = 'out-b2/model.ckpt'
@@ -300,7 +300,7 @@ utils_tf1.run_training(
     model_dir='efficientnetb2-ign',
     num_gpus=1,
     log_step=1,
-    save_checkpoint_step=1000,
+    save_checkpoint_step=2500,
     max_steps=num_train_steps,
     eval_fn=test_dataset,
     train_hooks=train_hooks,

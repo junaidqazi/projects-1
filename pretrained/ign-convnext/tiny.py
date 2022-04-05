@@ -17,7 +17,7 @@ import random
 import adamw
 
 IMAGE_SIZE = 384
-CLASSES = 7
+CLASSES = 8
 BATCH_SIZE = 8
 
 
@@ -230,8 +230,6 @@ class Model:
 
 
 num_train_steps = 30000
-init_lr = 1e-4
-end_learning_rate = 1e-6
 
 
 def model_fn(features, labels, mode, params):
@@ -241,7 +239,7 @@ def model_fn(features, labels, mode, params):
     model = Model(X=X, Y=Y)
 
     focal_loss = sm.losses.CategoricalFocalLoss()
-    dice_loss = sm.losses.DiceLoss(class_weights=np.array([0.5, 1.31237, 1.38874, 1.39761, 1.5, 1.47807, 1.0]))
+    dice_loss = sm.losses.DiceLoss()
     total_loss = dice_loss + (1 * focal_loss)
 
     iou = sm.metrics.IOUScore(threshold=0.5)
@@ -306,7 +304,7 @@ utils_tf1.run_training(
     model_dir='tiny-convnext-ign',
     num_gpus=1,
     log_step=1,
-    save_checkpoint_step=1000,
+    save_checkpoint_step=2500,
     max_steps=num_train_steps,
     eval_fn=test_dataset,
     train_hooks=train_hooks,

@@ -11,12 +11,14 @@ EfficientNet Tensorflow from https://github.com/qubvel/efficientnet
 And make sure put bias on the dataset, https://github.com/koechslin/swin-transformer-semantic-segmentation#information-on-the-training
 
 ```
-Dense forest => 0.5
-Sparse forest => 1.31237
-Moor => 1.38874
-Herbaceous formation => 1.39761
-Building => 1.5
-Road => 1.47807
+0. padding => 1.0
+1. no information (others) => 1.0
+2. Dense forest => 0.5
+3. Sparse forest => 1.31237
+4. Moor => 1.38874
+5. Herbaceous formation => 1.39761
+6. Building => 1.5
+7. Road => 1.47807
 ```
 
 ## Acknowledgement
@@ -26,4 +28,6 @@ Thanks to [KeyReply](https://www.keyreply.com/) for sponsoring GPU clouds to tra
 ## How-to
 
 ## Download
+
+All pretrained stored at https://huggingface.co/malay-huggingface/ign-EfficientNet
 
