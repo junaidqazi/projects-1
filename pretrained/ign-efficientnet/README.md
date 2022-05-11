@@ -29,5 +29,5 @@ Thanks to [KeyReply](https://www.keyreply.com/) for sponsoring GPU clouds to tra
 
 ## Download
 
-All pretrained stored at https://huggingface.co/malay-huggingface/ign-EfficientNet
+All pretrained stored at https://huggingface.co/malay-huggingface/ign-efficientnet
 

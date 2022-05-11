@@ -11,14 +11,21 @@ from utils import load_wav_to_torch, load_filepaths_and_text
 _pad = 'pad'
 _start = 'start'
 _eos = 'eos'
-_punctuation = "!',.-"
-_letters = 'abcdefghijklmnopqrstuvwxyz'
+_punctuation = "!'(),.:;? "
+_special = '-'
+_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+_numbers = '0123456789'
+_small_letters = 'abcdefghijklmnopqrstuvwxyz'
+_rejected = '\'():;"'
+_punct = ':;,.?'
 
-MALAYA_SPEECH_SYMBOLS = [_pad, _start, _eos] + list(_punctuation) + list(_letters)
+TTS_SYMBOLS = (
+    [_pad, _start, _eos] + list(_special) + list(_punctuation) + list(_letters)
+)
 
 
 def text_to_sequence(text):
-    r = [MALAYA_SPEECH_SYMBOLS.index(c) for c in string if c in MALAYA_SPEECH_SYMBOLS]
+    r = [TTS_SYMBOLS.index(c) for c in string if c in TTS_SYMBOLS]
     return r
 
 
