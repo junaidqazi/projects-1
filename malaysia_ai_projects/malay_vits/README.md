@@ -14,6 +14,21 @@ python3 setup.py build_ext --inplace
 2. Prepare dataset,
 
 - For `osman` speaker, [prepare-osman-vits.ipynb](prepare-osman-vits.ipynb).
+- For `yasmin` speaker, [prepare-yasmin-vits.ipynb](prepare-yasmin-vits.ipynb).
+
+3. Run training,
+
+- For `osman` speaker,
+
+```bash
+python3 train.py -c config/osman.json -m osman
+```
+
+- For `yasmin` speaker,
+
+```bash
+python3 train.py -c config/yasmin.json -m yasmin
+```
 
 ## Citation
 

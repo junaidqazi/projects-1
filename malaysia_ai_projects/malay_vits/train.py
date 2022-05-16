@@ -1,6 +1,6 @@
 import os
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '3'
+os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 
 import json
 import argparse
@@ -18,7 +18,8 @@ import utils
 from data_utils import (
     TextAudioLoader,
     TextAudioCollate,
-    DistributedBucketSampler
+    DistributedBucketSampler,
+    TTS_SYMBOLS,
 )
 from models import (
     SynthesizerTrn,
@@ -31,7 +32,6 @@ from losses import (
     kl_loss
 )
 from mel_processing import mel_spectrogram_torch, spec_to_mel_torch
-from text.symbols import symbols
 
 
 torch.backends.cudnn.benchmark = True
@@ -48,7 +48,6 @@ def run(hps):
     global global_step
     logger = utils.get_logger(hps.model_dir)
     logger.info(hps)
-    utils.check_git_hash(hps.model_dir)
     writer = SummaryWriter(log_dir=hps.model_dir)
     writer_eval = SummaryWriter(log_dir=os.path.join(hps.model_dir, "eval"))
 
@@ -59,7 +58,8 @@ def run(hps):
         train_dataset,
         hps.train.batch_size,
         [32, 300, 400, 500, 600, 700, 800, 900, 1000],
-        shuffle=True)
+        shuffle=True,
+        num_replicas=1, rank=0)
     collate_fn = TextAudioCollate()
     train_loader = DataLoader(train_dataset, num_workers=8, shuffle=False, pin_memory=True,
                               collate_fn=collate_fn, batch_sampler=train_sampler)
@@ -70,7 +70,7 @@ def run(hps):
                              drop_last=False, collate_fn=collate_fn)
 
     net_g = SynthesizerTrn(
-        len(symbols),
+        len(TTS_SYMBOLS),
         hps.data.filter_length // 2 + 1,
         hps.train.segment_size // hps.data.hop_length,
         **hps.model).cuda()
@@ -235,7 +235,7 @@ def evaluate(hps, generator, eval_loader, writer_eval):
             y = y[:1]
             y_lengths = y_lengths[:1]
             break
-        y_hat, attn, mask, *_ = generator.module.infer(x, x_lengths, max_len=1000)
+        y_hat, attn, mask, *_ = generator.infer(x, x_lengths, max_len=1000)
         y_hat_lengths = mask.sum([1, 2]).long() * hps.data.hop_length
 
         mel = spec_to_mel_torch(
