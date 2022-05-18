@@ -1,6 +1,6 @@
 # malay-VITS
 
-Originally from https://github.com/jaywalnut310/vits
+Originally from https://github.com/jaywalnut310/vits, https://arxiv.org/abs/2106.06103
 
 ## how-to train
 
@@ -29,6 +29,12 @@ python3 train.py -c config/osman.json -m osman
 ```bash
 python3 train.py -c config/yasmin.json -m yasmin
 ```
+
+## download
+
+1. Osman speaker, https://huggingface.co/malay-huggingface/VITS-Osman
+
+2. Yasmin speaker, https://huggingface.co/malay-huggingface/VITS-Yasmin
 
 ## Citation
 
