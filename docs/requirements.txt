@@ -22,3 +22,4 @@ malaya-boilerplate
 scipy
 tensorflow==1.15.5
 skimage
+scikit-image
