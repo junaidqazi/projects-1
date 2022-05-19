@@ -21,3 +21,4 @@ torch
 malaya-boilerplate
 scipy
 tensorflow==1.15.5
+skimage
