@@ -20,3 +20,4 @@ Jinja2==2.11.2
 torch
 malaya-boilerplate
 scipy
+tensorflow==1.15.5
