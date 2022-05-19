@@ -30,9 +30,11 @@ We recommend to use **virtualenv** for development.
 Features
 --------
 
+-  **Jelapang Padi**, Satellite Semantic segmentation for paddy field in Malaysia.
+-  **Malay VITS**, Malay TTS using VITS, https://arxiv.org/abs/2106.06103
 -  **SuaraKami**, Pre-trained STT models for Bahasa Malaysia, from https://github.com/redapesolutions/suara-kami-community
 -  **Pembalakan**, Satellite Semantic segmentation for deforestation in Malaysia.
--  **Jelapang Padi**, Satellite Semantic segmentation for paddy field in Malaysia.
+
 
 Other Projects
 ---------------

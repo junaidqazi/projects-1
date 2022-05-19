@@ -20,6 +20,8 @@ Contents:
    :maxdepth: 2
    :caption: Module
 
-   load-suarakami
-   load-pembalakan
    load-jelapang-padi
+   load-malay-vits
+   load-pembalakan
+   load-suarakami
+

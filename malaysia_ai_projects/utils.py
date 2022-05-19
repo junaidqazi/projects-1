@@ -4,8 +4,6 @@ import numpy as np
 
 def describe_availability(dict, transpose=True, text=''):
     if len(text):
-        logging.basicConfig(level=logging.INFO)
-
         logging.info(text)
     try:
         import pandas as pd
@@ -17,7 +15,7 @@ def describe_availability(dict, transpose=True, text=''):
         else:
             return df
     except BaseException:
-        logging.info('pandas not installed, will returned dictionary instead.')
+        logging.warning('pandas not installed, will returned dictionary instead.')
         return dict
 
 
