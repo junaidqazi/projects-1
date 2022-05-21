@@ -102,8 +102,8 @@ def load(model: str = 'osman'):
     model : str, optional (default='osman')
         Model architecture supported. Allowed values:
 
-        * ``'osman'`` - VITS Osman speaker.
-        * ``'yasmin'`` - VITS Yasmin speaker.
+        * ``'osman'`` - VITS Osman speaker, https://huggingface.co/malay-huggingface/VITS-Osman
+        * ``'yasmin'`` - VITS Yasmin speaker, https://huggingface.co/malay-huggingface/VITS-Yasmin
 
     Returns
     -------
